@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  prayer-calendar:
+    build: .
+    ports:
+      - "8060:8060"
