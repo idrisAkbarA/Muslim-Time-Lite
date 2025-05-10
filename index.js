@@ -19,7 +19,8 @@ app.get('/', async (req, res) => {
   const month = today.month() + 1;
 
   const url = `https://api.aladhan.com/v1/calendar?latitude=${LATITUDE}&longitude=${LONGITUDE}&method=${METHOD}&month=${month}&year=${year}`;
-
+  console.log(`fetching prayer data with url:\n${url}`);
+  
   try {
     const apiRes = await fetch(url);
     const data = await apiRes.json();
