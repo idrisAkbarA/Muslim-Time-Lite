@@ -30,12 +30,12 @@ app.get('/', async (req, res) => {
         const events = [];
         const alarms = [];
         alarms.push({
-            action: 'audio',
+            action: 'display',
             description: 'Reminder',
-            trigger: { hours: 2, minutes: 30, before: true },
-            repeat: 0,
-            attachType: 'VALUE=URI',
-            attach: 'Glass'
+            trigger: { hours: 0, minutes: 1, before: true },
+            // repeat: 0,
+            // attachType: 'VALUE=URI',
+            // attach: 'Glass'
         })
 
         for (const day of days) {
@@ -45,7 +45,7 @@ app.get('/', async (req, res) => {
             const apiDate = dayjs(dateStr, dateFormat);
             const prayers = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
 
-            console.log("day", day);
+            // console.log("day", day);
 
             // generate first dhuha schedule
             const dhuhaDate = dayjs(`${dateStr} 10:00`, `${dateFormat} H:mm`);
@@ -86,7 +86,7 @@ app.get('/', async (req, res) => {
             const sunriseDate = dayjs(`${dateStr} ${sunriseHour}:${sunriseMinute}`, `${dateFormat} H:mm`);
             const afterFajrPrayerDate = fajrDate.add(30, 'minutes')
             const firstDhuhaTimeOrSyuruqPrayerDate = sunriseDate.add(15, 'minute')
-            console.log("firstDhuhaTimeOrSyuruqPrayerDate", firstDhuhaTimeOrSyuruqPrayerDate.format("YYYY-MM-DD H:mm"));
+            // console.log("firstDhuhaTimeOrSyuruqPrayerDate", firstDhuhaTimeOrSyuruqPrayerDate.format("YYYY-MM-DD H:mm"));
             
             events.push({
                 start: [afterFajrPrayerDate.year(), afterFajrPrayerDate.month() + 1, afterFajrPrayerDate.date(), afterFajrPrayerDate.hour(), afterFajrPrayerDate.minute()],
